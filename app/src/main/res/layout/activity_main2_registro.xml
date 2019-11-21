@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:tools="http://schemas.android.com/tools"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        tools:context=".Main2ActivityRegistro">
+
+    <TextView
+            android:text="Registrar"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/textViewRegistrar" android:textSize="36sp"
+            app:layout_constraintTop_toTopOf="parent" app:layout_constraintStart_toStartOf="parent"
+            android:layout_marginTop="52dp" android:layout_marginLeft="89dp" android:layout_marginStart="89dp"/>
+    <EditText
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:inputType="textPersonName"
+            android:ems="10"
+            android:id="@+id/editTextEmailRegistrar" android:hint="@android:string/defaultVoiceMailAlphaTag"
+            app:layout_constraintStart_toStartOf="@+id/textViewRegistrar" android:layout_marginTop="44dp"
+            app:layout_constraintTop_toBottomOf="@+id/textViewRegistrar"/>
+    <EditText
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:inputType="textPassword"
+            android:ems="10"
+            android:id="@+id/editTextPassUnoRegistro" android:hint="Contraseña"
+            app:layout_constraintStart_toStartOf="@+id/editTextEmailRegistrar" android:layout_marginTop="45dp"
+            app:layout_constraintTop_toBottomOf="@+id/editTextEmailRegistrar"/>
+    <EditText
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:inputType="textPassword"
+            android:ems="10"
+            android:id="@+id/editTextPassDosRegistro" android:hint="Confirmar Contraseña"
+            app:layout_constraintStart_toStartOf="@+id/editTextPassUnoRegistro" android:layout_marginTop="50dp"
+            app:layout_constraintTop_toBottomOf="@+id/editTextPassUnoRegistro"/>
+    <Button
+            android:text="Registrar"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/buttonRegistrar"
+            android:layout_marginBottom="71dp"
+            app:layout_constraintEnd_toEndOf="@+id/textViewLogin"
+            app:layout_constraintBottom_toTopOf="@+id/textViewLogin" android:layout_marginTop="8dp"
+            app:layout_constraintTop_toBottomOf="@+id/editTextPassDosRegistro"
+            app:layout_constraintVertical_bias="1.0"/>
+    <TextView
+            android:text="Iniciar Sesion"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/textViewLogin"
+            app:layout_constraintStart_toStartOf="parent" app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent" android:layout_marginBottom="131dp"/>
+</androidx.constraintlayout.widget.ConstraintLayout>
