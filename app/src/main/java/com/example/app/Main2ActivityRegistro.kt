@@ -9,6 +9,8 @@ import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.FirebaseUser
+import com.google.firebase.database.DatabaseReference
+import com.google.firebase.database.FirebaseDatabase
 import kotlinx.android.synthetic.main.activity_main2_registro.*
 import javax.crypto.Cipher
 import javax.crypto.SecretKey
@@ -23,6 +25,8 @@ class Main2ActivityRegistro : AppCompatActivity() {
     private lateinit var registrar: Button
     private val keySecret:String = "gabriel guillermo sequeda sequed"
     private lateinit var secret: SecretKeySpec
+    private lateinit var database: FirebaseDatabase
+    private lateinit var myRef: DatabaseReference
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -32,6 +36,10 @@ class Main2ActivityRegistro : AppCompatActivity() {
         pass1 = findViewById(R.id.editTextPassUnoRegistro)
         pass2 = findViewById(R.id.editTextPassDosRegistro)
         registrar = findViewById(R.id.buttonRegistrar)
+
+        // Database
+        database = FirebaseDatabase.getInstance()
+        myRef = database.reference
 
         registrar.setOnClickListener {
             val clave1 = pass1.text.toString()
@@ -72,7 +80,9 @@ class Main2ActivityRegistro : AppCompatActivity() {
                 if (task.isSuccessful) {
                     // Sign in success, update UI with the signed-in user's information
                     Log.d(Companion.TAG, "createUserWithEmail:success")
-                    //val user = auth.currentUser
+                    val getUser = auth.currentUser
+                    val user = User(getUser!!.uid, getUser.email)
+                    myRef.child("user").child(user.UID!!).setValue(user)
                     intefazInicio()
                 } else {
                     // If sign in fails, display a message to the user.
