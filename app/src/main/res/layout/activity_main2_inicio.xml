@@ -1,95 +1,123 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout
-        xmlns:android="http://schemas.android.com/apk/res/android"
-        xmlns:tools="http://schemas.android.com/tools"
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
         xmlns:app="http://schemas.android.com/apk/res-auto"
+        xmlns:tools="http://schemas.android.com/tools"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         tools:context=".Main2ActivityInicio">
 
     <TextView
-            android:text="Inicio"
+            android:id="@+id/textViewInicio"
             android:layout_width="wrap_content"
             android:layout_height="0dp"
-            android:id="@+id/textViewInicio" android:textSize="36sp"
-            android:layout_marginTop="53dp" android:layout_marginBottom="20dp" app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintBottom_toTopOf="@+id/textViewNombreInicio" app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintStart_toStartOf="parent"/>
+            android:layout_marginTop="24dp"
+            android:text="Inicio"
+            android:textSize="36sp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
     <TextView
-            android:layout_width="253dp"
-            android:layout_height="0dp"
             android:id="@+id/textViewNombreInicio"
-            app:layout_constraintTop_toBottomOf="@+id/textViewInicio" android:layout_marginBottom="19dp"
-            app:layout_constraintEnd_toEndOf="parent" app:layout_constraintBottom_toTopOf="@+id/textViewEmailInicio"
-            app:layout_constraintStart_toStartOf="parent"/>
-    <TextView
             android:layout_width="253dp"
-            android:layout_height="0dp"
+            android:layout_height="59dp"
+            android:layout_marginStart="76dp"
+            android:layout_marginTop="20dp"
+            android:layout_marginEnd="82dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/textViewInicio" />
+
+    <TextView
             android:id="@+id/textViewEmailInicio"
-            app:layout_constraintTop_toBottomOf="@+id/textViewNombreInicio" android:layout_marginBottom="47dp"
-            app:layout_constraintEnd_toEndOf="parent" app:layout_constraintBottom_toTopOf="@+id/textViewLongInicio"
-            app:layout_constraintStart_toStartOf="parent"/>
+            android:layout_width="253dp"
+            android:layout_height="59dp"
+            android:layout_marginStart="79dp"
+            android:layout_marginTop="16dp"
+            android:layout_marginEnd="79dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/textViewNombreInicio" />
+
     <TextView
-            android:layout_width="0dp"
-            android:layout_height="56dp"
             android:id="@+id/textViewLatInicio"
-            app:layout_constraintBaseline_toBaselineOf="@+id/textViewLongInicio"
-            app:layout_constraintEnd_toStartOf="@+id/textViewLongInicio" app:layout_constraintStart_toStartOf="parent"
-            android:layout_marginLeft="79dp" android:layout_marginStart="79dp" android:layout_marginEnd="13dp"
-            android:layout_marginRight="13dp"/>
-    <TextView
-            android:layout_width="0dp"
-            android:layout_height="0dp"
-            android:id="@+id/textViewLongInicio"
-            app:layout_constraintTop_toBottomOf="@+id/textViewEmailInicio"
-            app:layout_constraintStart_toEndOf="@+id/textViewLatInicio" app:layout_constraintEnd_toEndOf="parent"
-            android:layout_marginBottom="57dp" app:layout_constraintBottom_toTopOf="@+id/buttonGetDosInicio"
-            android:layout_marginEnd="79dp" android:layout_marginRight="79dp"/>
-    <Button
-            android:text="GET"
-            android:layout_width="0dp"
+            android:layout_width="120dp"
             android:layout_height="56dp"
+            android:layout_marginStart="32dp"
+            android:layout_marginTop="24dp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/textViewEmailInicio" />
+
+    <TextView
+            android:id="@+id/textViewLongInicio"
+            android:layout_width="120dp"
+            android:layout_height="60dp"
+            android:layout_marginStart="13dp"
+            android:layout_marginTop="24dp"
+            android:layout_marginEnd="79dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintStart_toEndOf="@+id/textViewLatInicio"
+            app:layout_constraintTop_toBottomOf="@+id/textViewEmailInicio" />
+
+    <Button
             android:id="@+id/buttonGetUnoInicio"
-            app:layout_constraintBaseline_toBaselineOf="@+id/buttonGetDosInicio"
-            app:layout_constraintEnd_toStartOf="@+id/buttonGetDosInicio" app:layout_constraintStart_toStartOf="parent"
-            android:layout_marginLeft="79dp" android:layout_marginStart="79dp" android:layout_marginEnd="13dp"
-            android:layout_marginRight="13dp"/>
-    <Button
+            android:layout_width="120dp"
+            android:layout_height="56dp"
+            android:layout_marginStart="32dp"
+            android:layout_marginTop="20dp"
             android:text="GET"
-            android:layout_width="0dp"
-            android:layout_height="0dp"
-            android:id="@+id/buttonGetDosInicio"
-            app:layout_constraintTop_toBottomOf="@+id/textViewLongInicio"
-            app:layout_constraintStart_toEndOf="@+id/buttonGetUnoInicio" app:layout_constraintEnd_toEndOf="parent"
-            android:layout_marginBottom="23dp" app:layout_constraintBottom_toTopOf="@+id/editTextGetUnoInicio"
-            android:layout_marginEnd="79dp" android:layout_marginRight="79dp"/>
-    <EditText
-            android:layout_width="0dp"
-            android:layout_height="51dp"
-            android:inputType="textPersonName"
-            android:ems="10"
-            android:id="@+id/editTextGetDosInicio"
-            app:layout_constraintBaseline_toBaselineOf="@+id/editTextGetUnoInicio"
-            app:layout_constraintStart_toEndOf="@+id/editTextGetUnoInicio" android:layout_marginEnd="79dp"
-            android:layout_marginRight="79dp" app:layout_constraintEnd_toEndOf="parent"/>
-    <EditText
-            android:layout_width="0dp"
-            android:layout_height="0dp"
-            android:inputType="textPersonName"
-            android:ems="10"
-            android:id="@+id/editTextGetUnoInicio" app:layout_constraintTop_toBottomOf="@+id/buttonGetDosInicio"
-            app:layout_constraintEnd_toStartOf="@+id/editTextGetDosInicio" android:layout_marginBottom="50dp"
-            app:layout_constraintBottom_toTopOf="@+id/buttonGuardarInicio" app:layout_constraintStart_toStartOf="parent"
-            android:layout_marginLeft="76dp" android:layout_marginStart="76dp" android:layout_marginEnd="10dp"
-            android:layout_marginRight="10dp"/>
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/textViewLatInicio" />
+
     <Button
-            android:text="Guardar"
+            android:id="@+id/buttonGetDosInicio"
+            android:layout_width="120dp"
+            android:layout_height="59dp"
+            android:layout_marginStart="13dp"
+            android:layout_marginTop="16dp"
+            android:layout_marginEnd="79dp"
+            android:text="GET"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintStart_toEndOf="@+id/buttonGetUnoInicio"
+            app:layout_constraintTop_toBottomOf="@+id/textViewLongInicio" />
+
+    <EditText
+            android:id="@+id/editTextGetUnoInicio"
+            android:layout_width="123dp"
+            android:layout_height="59dp"
+            android:layout_marginStart="32dp"
+            android:layout_marginTop="20dp"
+            android:ems="10"
+            android:inputType="textPersonName"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/buttonGetUnoInicio" />
+
+    <EditText
+            android:id="@+id/editTextGetDosInicio"
+            android:layout_width="124dp"
+            android:layout_height="61dp"
+            android:layout_marginStart="11dp"
+            android:layout_marginTop="16dp"
+            android:layout_marginEnd="78dp"
+            android:ems="10"
+            android:inputType="textPersonName"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintStart_toEndOf="@+id/editTextGetUnoInicio"
+            app:layout_constraintTop_toBottomOf="@+id/buttonGetDosInicio" />
+
+    <Button
+            android:id="@+id/buttonGuardarInicio"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:id="@+id/buttonGuardarInicio"
-            app:layout_constraintTop_toBottomOf="@+id/editTextGetUnoInicio" android:layout_marginBottom="88dp"
-            app:layout_constraintEnd_toEndOf="@+id/editTextGetDosInicio"
-            app:layout_constraintStart_toStartOf="@+id/editTextGetUnoInicio" android:layout_marginLeft="84dp"
-            app:layout_constraintBottom_toBottomOf="parent" android:layout_marginStart="84dp"
-            android:layout_marginEnd="84dp" android:layout_marginRight="84dp"/>
+            android:layout_marginStart="160dp"
+            android:layout_marginTop="20dp"
+            android:layout_marginEnd="163dp"
+            android:text="Guardar"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.479"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/editTextGetUnoInicio" />
 </androidx.constraintlayout.widget.ConstraintLayout>
