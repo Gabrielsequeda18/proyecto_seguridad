@@ -1,6 +1,8 @@
 package com.example.app
 
 import android.Manifest
+import android.content.Context
+import android.content.SharedPreferences
 import android.content.pm.PackageManager
 import android.location.Location
 import android.os.Bundle
@@ -20,7 +22,6 @@ class Main2ActivityInicio : AppCompatActivity(),
     LocationListener {
 
     private lateinit var auth: FirebaseAuth
-    private lateinit var nombreInicio:TextView
     private lateinit var emailInicio:TextView
     private lateinit var latInicio:TextView
     private lateinit var longInicio:TextView
@@ -31,11 +32,12 @@ class Main2ActivityInicio : AppCompatActivity(),
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main2_inicio)
         auth = FirebaseAuth.getInstance()
-        nombreInicio = findViewById(R.id.textViewNombreInicio)
         emailInicio = findViewById(R.id.textViewEmailInicio)
         latInicio = findViewById(R.id.textViewLatInicio)
         longInicio = findViewById(R.id.textViewLongInicio)
         locationRequest = LocationRequest()
+
+        mostrarUsuarioSharedPreferences()
 
         googleApiClient = GoogleApiClient.Builder(this)
             .enableAutoManage(this, this)
@@ -46,17 +48,12 @@ class Main2ActivityInicio : AppCompatActivity(),
 
     }
 
-    public override fun onStart() {
+    /*public override fun onStart() {
         super.onStart()
         // Check if user is signed in (non-null) and update UI accordingly.
         val currentUser = auth.currentUser
-        if(currentUser?.displayName != null){
-            nombreInicio.text = currentUser.displayName
-        } else {
-            nombreInicio.text = "Sin nombre"
-        }
         emailInicio.text = currentUser!!.email
-    }
+    }*/
 
     private fun capturarUsuario(){
         val user = FirebaseAuth.getInstance().currentUser
@@ -75,6 +72,12 @@ class Main2ActivityInicio : AppCompatActivity(),
             val uid = user.uid
             */
         }
+    }
+
+    private fun mostrarUsuarioSharedPreferences(){
+        val preference: SharedPreferences = getSharedPreferences("preferences", Context.MODE_PRIVATE)
+        preference.getString("uid", "")
+        emailInicio.text = preference.getString("email", "")
     }
 
     private fun updateLocation(){

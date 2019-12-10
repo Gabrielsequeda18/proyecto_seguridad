@@ -50,7 +50,6 @@ class MainActivity : AppCompatActivity() {
         val  editor: SharedPreferences.Editor = preference.edit()
         editor.putString("uid", user.UID)
         editor.putString("email", user.email)
-        editor.putString("name", "N/A")
         editor.commit()
     }
 
@@ -61,6 +60,8 @@ class MainActivity : AppCompatActivity() {
                     // Sign in success, update UI with the signed-in user's information
                     Log.d(TAG, "signInWithEmail:success")
                     val user = auth.currentUser
+                    val usuario = User(user!!.uid,  user!!.email)
+                    guardarUsuarioSharedPreferences(usuario)
                     intefazInicio()
                     //updateUI(user)
                 } else {

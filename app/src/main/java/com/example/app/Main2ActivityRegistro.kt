@@ -1,6 +1,8 @@
 package com.example.app
 
+import android.content.Context
 import android.content.Intent
+import android.content.SharedPreferences
 import android.os.Bundle
 import android.util.Base64
 import android.util.Log
@@ -29,6 +31,7 @@ class Main2ActivityRegistro : AppCompatActivity() {
     private lateinit var secret: SecretKeySpec
     private lateinit var database: FirebaseDatabase
     private lateinit var myRef: DatabaseReference
+    private lateinit var dbHelper: DBHelper
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -42,6 +45,7 @@ class Main2ActivityRegistro : AppCompatActivity() {
         // Database
         database = FirebaseDatabase.getInstance()
         myRef = database.reference
+        dbHelper = DBHelper(this,null)
 
         registrar.setOnClickListener {
             val clave1 = pass1.text.toString()
@@ -74,6 +78,14 @@ class Main2ActivityRegistro : AppCompatActivity() {
         startActivity(Intent(this, MainActivity::class.java))
     }
 
+    private fun guardarUsuarioSharedPreferences(user: User){
+        val preference: SharedPreferences = getSharedPreferences("preferences", Context.MODE_PRIVATE)
+        val  editor: SharedPreferences.Editor = preference.edit()
+        editor.putString("uid", user.UID)
+        editor.putString("email", user.email)
+        editor.commit()
+    }
+
     private fun crearCuenta(email:String, password:String){
         auth.createUserWithEmailAndPassword(email, password)
             .addOnCompleteListener(this) { task ->
@@ -82,18 +94,18 @@ class Main2ActivityRegistro : AppCompatActivity() {
                     Log.d(TAG, "createUserWithEmail:success")
                     val getUser = auth.currentUser
                     val user = User(getUser!!.uid, getUser.email)
+                    guardarUsuarioSharedPreferences(user)
+                    dbHelper.insertRow(user.email!!, user.UID!!)
                     myRef.child("user").child(user.UID!!).setValue(user)
                     intefazInicio()
                 } else {
                     // If sign in fails, display a message to the user.
                     Log.w(TAG, "createUserWithEmail:failure", task.exception)
-                    Toast.makeText(baseContext, "Authentication failed.",
-                        Toast.LENGTH_SHORT).show()
+                    Toast.makeText(baseContext, "Authentication failed.", Toast.LENGTH_SHORT).show()
                     //updateUI(null)
                 }
             }
     }
-
 
     private fun generateKey(): SecretKey? {
         return SecretKeySpec(keySecret.toByteArray(), "AES").also { secret = it }
